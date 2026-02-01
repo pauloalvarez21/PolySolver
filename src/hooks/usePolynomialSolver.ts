@@ -208,6 +208,45 @@ const usePolynomialSolver = () => {
     return roots.map(real => ({ real, imag: 0, isComplex: false }));
   };
 
+  const [graphData, setGraphData] = useState<{ x: number; y: number }[]>([]);
+
+  // Generar datos para el gráfico
+  const generateGraphData = (coeffs: number[], roots: number[]) => {
+    if (coeffs.length === 0) return [];
+
+    let minX = -10;
+    let maxX = 10;
+
+    if (roots.length > 0) {
+      const realRoots = roots;
+      minX = Math.min(...realRoots) - 5;
+      maxX = Math.max(...realRoots) + 5;
+    }
+
+    // Asegurar un rango mínimo
+    if (maxX - minX < 10) {
+      const center = (minX + maxX) / 2;
+      minX = center - 5;
+      maxX = center + 5;
+    }
+
+    const points = [];
+    const steps = 100;
+    const stepSize = (maxX - minX) / steps;
+    const f = polynomialFunction(coeffs);
+
+    for (let i = 0; i <= steps; i++) {
+      const x = minX + i * stepSize;
+      const y = f(x);
+      // Limitar y para evitar valores extremos que rompan el gráfico
+      if (!isNaN(y) && isFinite(y)) {
+        points.push({ x: Number(x.toFixed(2)), y: Number(y.toFixed(2)) });
+      }
+    }
+
+    return points;
+  };
+
   // Resolver la ecuación
   const solve = (): boolean => {
     setError('');
@@ -232,6 +271,14 @@ const usePolynomialSolver = () => {
       }
 
       setSolutions(newSolutions);
+
+      // Generar puntos para el gráfico basados en las raíces reales encontradas
+      const realRoots = newSolutions
+        .filter(s => !s.isComplex)
+        .map(s => s.real);
+      const data = generateGraphData(coeffs, realRoots);
+      setGraphData(data);
+
       return true;
     } catch (err) {
       setError('Error al resolver la ecuación. Verifica los coeficientes.');
@@ -250,6 +297,7 @@ const usePolynomialSolver = () => {
       f: '',
     });
     setSolutions([]);
+    setGraphData([]);
     setError('');
     setEquation('0 = 0');
   };
@@ -286,6 +334,7 @@ const usePolynomialSolver = () => {
     updateCoefficient,
     equation,
     solutions,
+    graphData,
     error,
     solve,
     clear,

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import usePolynomialSolver from '../hooks/usePolynomialSolver';
 import CoefficientInput from '../components/CoefficientInput';
+import PolynomialChart from '../components/PolynomialChart';
 
 const OperationScreen = () => {
   const {
@@ -20,6 +21,8 @@ const OperationScreen = () => {
     updateCoefficient,
     equation,
     solutions,
+    graphData,
+    error,
     solve,
     clear,
     formatSolutions,
@@ -97,6 +100,10 @@ const OperationScreen = () => {
         <View style={styles.generatedEquationContainer}>
           <Text style={styles.generatedEquationText}>{equation}</Text>
         </View>
+
+        {graphData.length > 0 && (
+          <PolynomialChart data={graphData} equation={equation} />
+        )}
 
         {solutions.length > 0 && (
           <View style={styles.resultsContainer}>
