@@ -6,7 +6,7 @@ const SplashScreen = () => {
     <View style={styles.container}>
       {/* REVISA: Asegúrate de que el nombre del archivo coincida con el que tienes en assets/images */}
       <Image
-        source={require('../../src/assests/images/PolySolver.png')}
+        source={require('../assests/images/PolySolver.png')}
         style={styles.image}
         resizeMode="contain"
       />
