@@ -8,10 +8,12 @@ import {
   ScrollView,
   Platform,
   KeyboardAvoidingView,
+  Image,
 } from 'react-native';
 import usePolynomialSolver from '../hooks/usePolynomialSolver';
 import CoefficientInput from '../components/CoefficientInput';
 import PolynomialChart from '../components/PolynomialChart';
+import { t } from '../i18n/index';
 
 const OperationScreen = () => {
   const {
@@ -37,7 +39,7 @@ const OperationScreen = () => {
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.title}>PolySolver</Text>
+        <Text style={styles.title}>{t.appTitle}</Text>
 
         <View style={styles.equationContainer}>
           <Text style={styles.equationText}>axⁿ + ... + c = 0</Text>
@@ -46,16 +48,16 @@ const OperationScreen = () => {
 
         <View style={styles.configRow}>
           <TouchableOpacity style={styles.configButton}>
-            <Text style={styles.configButtonText}>Calculate Roots</Text>
+            <Text style={styles.configButtonText}>{t.calculateRoots}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.configButton}>
-            <Text style={styles.configButtonText}>Settings</Text>
+            <Text style={styles.configButtonText}>{t.settings}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.separator} />
 
-        <Text style={styles.sectionTitle}>Equation Degree</Text>
+        <Text style={styles.sectionTitle}>{t.equationDegree}</Text>
         <View style={styles.degreeSelector}>
           {[1, 2, 3, 4, 5].map(deg => (
             <TouchableOpacity
@@ -107,7 +109,7 @@ const OperationScreen = () => {
 
         {solutions.length > 0 && (
           <View style={styles.resultsContainer}>
-            <Text style={styles.resultsTitle}>Results</Text>
+            <Text style={styles.resultsTitle}>{t.results}</Text>
             <Text style={styles.resultsText}>{formatSolutions()}</Text>
           </View>
         )}
@@ -117,16 +119,28 @@ const OperationScreen = () => {
             style={[styles.actionButton, styles.solveButton]}
             onPress={() => solve()}
           >
-            <Text style={styles.solveButtonText}>Solve</Text>
+            <Text style={styles.solveButtonText}>{t.solve}</Text>
           </TouchableOpacity>
-
           <TouchableOpacity
             style={[styles.actionButton, styles.clearButton]}
             onPress={clear}
           >
-            <Text style={styles.clearButtonText}>Clear</Text>
+            <Text style={styles.clearButtonText}>{t.clear}</Text>
           </TouchableOpacity>
         </View>
+
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>{t.homeFooterRights}</Text>
+          <Text style={styles.footerSubtext}>{t.homeFooterTool}</Text>
+          <Text style={styles.footerVersion}>{t.homeFooterVersion}</Text>
+          <Image
+            source={require('../assests/images/gaelectronica.png')}
+            style={styles.footerLogo}
+          />
+        </View>
+
+        <View style={styles.bottomSpacer} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -144,7 +158,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontFamily: 'ChowFun-Regular',
     textAlign: 'center',
     marginBottom: 10,
     color: '#006064',
@@ -156,11 +170,11 @@ const styles = StyleSheet.create({
   equationText: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#333',
+    color: '#006064',
   },
   equationSubtext: {
     fontSize: 18,
-    color: '#666',
+    color: '#006064',
     marginTop: 5,
   },
   configRow: {
@@ -252,7 +266,7 @@ const styles = StyleSheet.create({
   },
   resultsTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'ChowFun-Regular',
     color: '#33691e',
     marginBottom: 10,
   },
@@ -291,6 +305,42 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  footer: {
+    marginTop: 40,
+    alignItems: 'center',
+    paddingTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#b2ebf2',
+  },
+  footerText: {
+    fontSize: 12,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 4,
+    fontFamily: 'ChowFun-Regular',
+  },
+  footerSubtext: {
+    fontSize: 11,
+    color: '#999',
+    textAlign: 'center',
+    marginBottom: 4,
+    fontFamily: 'ChowFun-Regular',
+  },
+  footerVersion: {
+    fontSize: 10,
+    color: '#AAA',
+    textAlign: 'center',
+    fontFamily: 'ChowFun-Regular',
+  },
+  footerLogo: {
+    width: 120,
+    height: 120,
+    marginTop: 15,
+    resizeMode: 'contain',
+  },
+  bottomSpacer: {
+    height: 20,
   },
 });
 

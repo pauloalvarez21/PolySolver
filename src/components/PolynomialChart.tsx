@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
+import { t } from '../i18n/index';
 
 interface PolynomialChartProps {
   data: { x: number; y: number }[];
@@ -48,7 +49,7 @@ const PolynomialChart: React.FC<PolynomialChartProps> = ({ data, equation }) => 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.chartTitle}>Visualización del Polinomio</Text>
+      <Text style={styles.chartTitle}>{t.chartTitle}</Text>
       <View style={styles.chartWrapper}>
         <LineChart
           data={chartData}
