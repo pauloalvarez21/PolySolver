@@ -5,16 +5,20 @@ const getSystemLanguage = (): string => {
     let locale: string | undefined;
 
     if (Platform.OS === 'ios') {
-      // @ts-ignore
+      // Prioritize AppleLanguages as it reflects user preference better than AppleLocale
       const settings = NativeModules.SettingsManager?.settings;
-      locale = settings?.AppleLocale || settings?.AppleLanguages?.[0];
+      locale = settings?.AppleLanguages?.[0] || settings?.AppleLocale;
     } else {
       locale = NativeModules.I18nManager?.localeIdentifier;
     }
 
-    if (!locale || typeof locale !== 'string') return 'es';
+    if (!locale || typeof locale !== 'string') return 'en';
 
-    return locale.split('_')[0].split('-')[0].toLowerCase();
+    // Normalize locale to get just the language code (e.g., 'es-US' or 'es_ES' -> 'es')
+    const langCode = locale.split('_')[0].split('-')[0].toLowerCase();
+    
+    // Condition: return 'es' if Spanish, otherwise 'en'
+    return langCode === 'es' ? 'es' : 'en';
   } catch (error) {
     console.log('Error detecting language:', error);
     return 'en';
@@ -22,7 +26,7 @@ const getSystemLanguage = (): string => {
 };
 
 const systemLang = getSystemLanguage();
-const Language = systemLang === 'es' ? 'es' : 'en';
+const Language = systemLang; // Simplified as getSystemLanguage already returns 'es' or 'en'
 
 interface TranslationKeys {
   appTitle: string;
