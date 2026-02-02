@@ -1,32 +1,15 @@
-import { NativeModules, Platform } from 'react-native';
+import { findBestLanguageTag } from 'react-native-localize';
 
 const getSystemLanguage = (): string => {
-  try {
-    let locale: string | undefined;
+  // Use react-native-localize to find the best match between supported languages
+  const bestLanguage = findBestLanguageTag(['es', 'en']);
 
-    if (Platform.OS === 'ios') {
-      // Prioritize AppleLanguages as it reflects user preference better than AppleLocale
-      const settings = NativeModules.SettingsManager?.settings;
-      locale = settings?.AppleLanguages?.[0] || settings?.AppleLocale;
-    } else {
-      locale = NativeModules.I18nManager?.localeIdentifier;
-    }
-
-    if (!locale || typeof locale !== 'string') return 'en';
-
-    // Normalize locale to get just the language code (e.g., 'es-US' or 'es_ES' -> 'es')
-    const langCode = locale.split('_')[0].split('-')[0].toLowerCase();
-    
-    // Condition: return 'es' if Spanish, otherwise 'en'
-    return langCode === 'es' ? 'es' : 'en';
-  } catch (error) {
-    console.log('Error detecting language:', error);
-    return 'en';
-  }
+  // Requirement: if 'es', show Spanish, otherwise English
+  return bestLanguage?.languageTag === 'es' ? 'es' : 'en';
 };
 
 const systemLang = getSystemLanguage();
-const Language = systemLang; // Simplified as getSystemLanguage already returns 'es' or 'en'
+const Language = systemLang;
 
 interface TranslationKeys {
   appTitle: string;
@@ -80,7 +63,7 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
     navHome: 'Inicio',
     navOperation: 'Operar',
     navInfo: 'Info',
-    
+
     // HomeScreen
     homeSubtitle: 'Tu aliado matemático avanzado',
     howItWorks: '¿Cómo funciona?',
@@ -148,8 +131,8 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
     graphBenefit2: 'Behavior: Allows understanding if the function increases or decreases and seeing its inflection points.',
     graphBenefit3: 'Analysis: Facilitates the understanding of the function trend in different intervals.',
     startSolving: 'Start Solving',
-    homeFooterRights: '© 2026 Automation and Electronics Group. All rights reserved.',
-    homeFooterTool: 'Tool developed by the Automation and Electronics Group.',
+    homeFooterRights: '© 2026 Gaelectronica. All rights reserved.',
+    homeFooterTool: 'Tool developed by the Gaelectronica.',
     homeFooterVersion: 'v1.0.0',
 
     // OperationScreen
