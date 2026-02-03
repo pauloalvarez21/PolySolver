@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,26 @@ import {
   TouchableOpacity,
   Dimensions,
   Image,
+  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from '../i18n/index';
+import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-2899284558865652/7157824613';
+
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
+  const bannerRef = useRef<BannerAd>(null);
+
+  useForeground(() => {
+    Platform.OS === 'ios' && bannerRef.current?.load();
+  });
 
   return (
     <View style={styles.container}>
+      <BannerAd ref={bannerRef} unitId={adUnitId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   View,
   Text,
@@ -7,16 +7,28 @@ import {
   TouchableOpacity,
   Linking,
   Image,
+  Platform,
 } from 'react-native';
 import { t } from '../i18n/index';
+import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-2899284558865652/7157824613';
 
 const InfoScreen = () => {
+
+  const bannerRef = useRef<BannerAd>(null);
+  
+    useForeground(() => {
+      Platform.OS === 'ios' && bannerRef.current?.load();
+    });
+
   const openWikipedia = () => {
     Linking.openURL('https://es.wikipedia.org/wiki/Ecuaci%C3%B3n');
   };
 
   return (
     <View style={styles.container}>
+       <BannerAd ref={bannerRef} unitId={adUnitId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
@@ -199,20 +211,21 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#999',
     textAlign: 'center',
-    marginBottom: 4,
+    marginBottom: 8,
     fontFamily: 'Inter-Regular',
   },
   footerVersion: {
     fontSize: 10,
-    color: '#AAA',
+    color: '#BBB',
     textAlign: 'center',
     fontFamily: 'Inter-Regular',
   },
   footerLogo: {
-    width: 120,
-    height: 120,
-    marginTop: 15,
+    width: 150,
+    height: 150,
+    marginTop: 16,
     resizeMode: 'contain',
+    borderRadius: 30,
   },
   bottomSpacer: {
     height: 20,

@@ -1,4 +1,8 @@
 {
   "name": "PolySolver",
-  "displayName": "PolySolver"
+  "displayName": "PolySolver",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-2899284558865652~7188887856",
+    "ios_app_id": "ca-app-pub-2899284558865652~7188887856"
+  }
 }
