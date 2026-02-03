@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Bold',
     textAlign: 'center',
     marginBottom: 10,
     color: '#006064',
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   resultsTitle: {
     fontSize: 20,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Bold',
     color: '#33691e',
     marginBottom: 10,
   },
@@ -318,20 +318,20 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginBottom: 4,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerSubtext: {
     fontSize: 11,
     color: '#999',
     textAlign: 'center',
     marginBottom: 4,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerVersion: {
     fontSize: 10,
     color: '#AAA',
     textAlign: 'center',
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerLogo: {
     width: 120,

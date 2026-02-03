@@ -98,14 +98,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 42,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Bold',
     textAlign: 'center',
     color: '#006064',
     marginBottom: 5,
   },
   subtitle: {
     fontSize: 18,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Medium',
     textAlign: 'center',
     color: '#0097a7',
     marginBottom: 30,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 22,
     color: '#006064',
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Bold',
     marginBottom: 12,
   },
   cardText: {
@@ -201,20 +201,20 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginBottom: 4,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerSubtext: {
     fontSize: 11,
     color: '#999',
     textAlign: 'center',
     marginBottom: 8,
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerVersion: {
     fontSize: 10,
     color: '#BBB',
     textAlign: 'center',
-    fontFamily: 'ChowFun-Regular',
+    fontFamily: 'Inter-Regular',
   },
   footerLogo: {
     width: 150,
