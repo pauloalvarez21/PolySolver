@@ -53,6 +53,7 @@ interface TranslationKeys {
   viewWiki: string;
   quote: string;
   chartTitle: string;
+  loadingComponents: string;
 }
 
 const translations: { es: TranslationKeys; en: TranslationKeys } = {
@@ -118,6 +119,8 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
 
     // Chart
     chartTitle: 'Visualización del Polinomio',
+    loadingComponents: "Cargando componentes..."
+
   },
   en: {
     // General
@@ -181,6 +184,10 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
 
     // Chart
     chartTitle: 'Polynomial Visualization',
+    
+  loadingComponents: "Loading components..."
+
+
   },
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { t } from '../i18n/index';
 
 const SplashScreen = () => {
   return (
@@ -13,7 +14,7 @@ const SplashScreen = () => {
       <Text style={styles.title}>PolySolver</Text>
 
       <ActivityIndicator size="large" color="tomato" style={styles.loader} />
-      <Text style={styles.loadingText}>Cargando componentes...</Text>
+      <Text style={styles.loadingText}>{t.loadingComponents}</Text>
     </View>
   );
 };
