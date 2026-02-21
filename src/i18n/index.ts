@@ -83,7 +83,7 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
     graphBenefit3:
       'Análisis: Facilita la comprensión de la tendencia de la función en diferentes intervalos.',
     startSolving: 'Comenzar a Resolver',
-    homeFooterRights: '© 2026 Gaelectronica. Todos los derechos reservados.',
+    homeFooterRights: '© 2024 - {{year}} Gaelectronica. Todos los derechos reservados.',
     homeFooterTool: 'Herramienta desarrollada por el Gaelectronica.',
     homeFooterVersion: 'v1.0.0',
 
@@ -148,7 +148,7 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
     graphBenefit3:
       'Analysis: Facilitates the understanding of the function trend in different intervals.',
     startSolving: 'Start Solving',
-    homeFooterRights: '© 2026 Gaelectronica. All rights reserved.',
+    homeFooterRights: '© 2024 - {{year}} Gaelectronica. All rights reserved.',
     homeFooterTool: 'Tool developed by the Gaelectronica.',
     homeFooterVersion: 'v1.0.0',
 

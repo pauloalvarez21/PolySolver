@@ -1,7 +1,7 @@
 #!/bin/bash
-# Quick Start Script para Números Romanos App
+# Quick Start Script para PolySolver App
 
-echo "🚀 Números Romanos App - Quick Start"
+echo "🚀 PolySolver App - Quick Start"
 echo "===================================="
 echo ""
 
@@ -11,15 +11,22 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
+# Verificar si Yarn está instalado
+if ! command -v yarn &> /dev/null; then
+    echo "❌ Yarn no está instalado. Por favor instálalo con 'npm install -g yarn'"
+    exit 1
+fi
+
 echo "✅ Node.js detectado: $(node --version)"
+echo "✅ Yarn detectado: $(yarn --version)"
 echo ""
 
 # Instalar dependencias
-echo "📦 Instalando dependencias..."
-npm install
+echo "📦 Instalando dependencias con Yarn..."
+yarn install
 
 if [ $? -ne 0 ]; then
-    echo "❌ Error al instalar dependencias"
+    echo "❌ Error al instalar dependencias con Yarn"
     exit 1
 fi
 
@@ -41,21 +48,11 @@ if [ "$1" == "ios" ] || [ -z "$1" ]; then
     echo ""
 fi
 
-# Ejecutar tests
-echo "🧪 Ejecutando tests..."
-npm test -- romanConvert.test.ts
-
-if [ $? -ne 0 ]; then
-    echo "⚠️ Algunos tests fallaron"
-else
-    echo "✅ Todos los tests pasaron"
-fi
-
 echo ""
 echo "✨ ¡Aplicación lista!"
 echo ""
 echo "Para ejecutar la aplicación:"
-echo "  Android: npm run android"
-echo "  iOS:     npm run ios"
+echo "  Android: yarn android"
+echo "  iOS:     yarn ios"
 echo ""
 echo "Para más información, consulta README.md"

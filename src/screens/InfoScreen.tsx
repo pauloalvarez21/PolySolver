@@ -6,11 +6,11 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
-  Image,
   Platform,
 } from 'react-native';
 import { t } from '../i18n/index';
 import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-google-mobile-ads';
+import Footer from '../components/Footer';
 
 const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-2899284558865652/7157824613';
 
@@ -83,15 +83,7 @@ const InfoScreen = () => {
         </View>
 
         {/* Footer */}
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>{t.homeFooterRights}</Text>
-          <Text style={styles.footerSubtext}>{t.homeFooterTool}</Text>
-          <Text style={styles.footerVersion}>{t.homeFooterVersion}</Text>
-          <Image
-            source={require('../assests/images/gaelectronica.png')}
-            style={styles.footerLogo}
-          />
-        </View>
+        <Footer />
 
         <View style={styles.bottomSpacer} />
       </ScrollView>
@@ -192,40 +184,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
     opacity: 0.8,
-  },
-  footer: {
-    marginTop: 40,
-    alignItems: 'center',
-    paddingTop: 20,
-    borderTopWidth: 1,
-    borderTopColor: '#b2ebf2',
-  },
-  footerText: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 4,
-    fontFamily: 'Inter-Regular',
-  },
-  footerSubtext: {
-    fontSize: 11,
-    color: '#999',
-    textAlign: 'center',
-    marginBottom: 8,
-    fontFamily: 'Inter-Regular',
-  },
-  footerVersion: {
-    fontSize: 10,
-    color: '#BBB',
-    textAlign: 'center',
-    fontFamily: 'Inter-Regular',
-  },
-  footerLogo: {
-    width: 150,
-    height: 150,
-    marginTop: 16,
-    resizeMode: 'contain',
-    borderRadius: 30,
   },
   bottomSpacer: {
     height: 20,
