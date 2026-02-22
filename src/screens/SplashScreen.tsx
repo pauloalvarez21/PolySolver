@@ -13,7 +13,7 @@ const SplashScreen = () => {
       />
       <Text style={styles.title}>PolySolver</Text>
 
-      <ActivityIndicator size="large" color="tomato" style={styles.loader} />
+      <ActivityIndicator size="large" color="tomato" style={styles.loader} testID="loading-indicator" />
       <Text style={styles.loadingText}>{t.loadingComponents}</Text>
     </View>
   );
