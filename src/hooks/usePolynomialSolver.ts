@@ -1,5 +1,6 @@
 // hooks/usePolynomialSolver.ts
 import { useState, useEffect } from 'react';
+import { t } from '../i18n';
 
 export type PolynomialCoefficients = {
   a: string;
@@ -255,7 +256,7 @@ const usePolynomialSolver = () => {
 
     // Validar coeficiente principal
     if (coeffs[0] === 0) {
-      setError('El coeficiente principal (a) no puede ser cero.');
+      setError(t.errorCoefficientA);
       return false;
     }
 
@@ -281,7 +282,7 @@ const usePolynomialSolver = () => {
 
       return true;
     } catch (err) {
-      setError('Error al resolver la ecuación. Verifica los coeficientes.');
+      setError(t.errorSolving);
       return false;
     }
   };
@@ -305,10 +306,10 @@ const usePolynomialSolver = () => {
   // Formatear resultados como texto
   const formatSolutions = (): string => {
     if (solutions.length === 0) {
-      return error || 'No se han calculado soluciones.';
+      return error || t.noSolutionsCalculated;
     }
 
-    return `Soluciones encontradas:\n${solutions
+    return `${t.solutionsFound}\n${solutions
       .map((sol, idx) => {
         if (sol.isComplex) {
           const realStr = sol.real.toFixed(3);

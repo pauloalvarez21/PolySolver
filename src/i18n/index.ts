@@ -54,6 +54,10 @@ interface TranslationKeys {
   quote: string;
   chartTitle: string;
   loadingComponents: string;
+  errorCoefficientA: string;
+  errorSolving: string;
+  noSolutionsCalculated: string;
+  solutionsFound: string;
 }
 
 const translations: { es: TranslationKeys; en: TranslationKeys } = {
@@ -119,8 +123,11 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
 
     // Chart
     chartTitle: 'Visualización del Polinomio',
-    loadingComponents: "Cargando componentes..."
-
+    loadingComponents: "Cargando componentes...",
+    errorCoefficientA: 'El coeficiente principal (a) no puede ser cero.',
+    errorSolving: 'Error al resolver la ecuación. Verifica los coeficientes.',
+    noSolutionsCalculated: 'No se han calculado soluciones.',
+    solutionsFound: 'Soluciones encontradas:',
   },
   en: {
     // General
@@ -185,9 +192,11 @@ const translations: { es: TranslationKeys; en: TranslationKeys } = {
     // Chart
     chartTitle: 'Polynomial Visualization',
     
-  loadingComponents: "Loading components..."
-
-
+    loadingComponents: "Loading components...",
+    errorCoefficientA: 'The leading coefficient (a) cannot be zero.',
+    errorSolving: 'Error solving the equation. Check the coefficients.',
+    noSolutionsCalculated: 'No solutions calculated.',
+    solutionsFound: 'Solutions found:',
   },
 };
 
